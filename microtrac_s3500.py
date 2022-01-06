@@ -22,60 +22,60 @@ class MicrotracS3500:
     def get_sample_information(self):
 
         filter_title = self.df[self.df["Column 1"].str.contains("Title", na=False)].reset_index()
-        self.title = filter_title["Column 2"][0]
+        self.title = filter_title["Column 2"][0].strip()
 
         filter_id_1 = self.df[self.df["Column 1"].str.contains("ID  1:", na=False)].reset_index()
         # print("id1", filter_id_1)
-        self.id_1 = filter_id_1["Column 2"][0]
+        self.id_1 = filter_id_1["Column 2"][0].strip()
 
         filter_id_2 = self.df[self.df["Column 1"].str.contains("ID  2:", na=False)].reset_index()
         # print("id2", filter_id_2)
-        self.id_2 = filter_id_2["Column 2"][0]
+        self.id_2 = filter_id_2["Column 2"][0].strip()
 
         filter_date = self.df[self.df["Column 1"].str.contains("Date:", na=False)].reset_index()
         # print("date", filter_date)
-        self.date = filter_date["Column 2"][0]
+        self.date = filter_date["Column 2"][0].strip()
 
         filter_time = self.df[self.df["Column 1"].str.contains("Time:", na=False)].reset_index()
         # print("time", filter_time)
-        self.time = filter_time["Column 2"][0]
+        self.time = filter_time["Column 2"][0].strip()
 
         filter_db_rec = self.df[self.df["Column 1"].str.contains("Db  Rec#:", na=False)].reset_index()
         # print("db rec", filter_db_rec)
-        self.db_rec = filter_db_rec["Column 2"][0]
+        self.db_rec = filter_db_rec["Column 2"][0].strip()
 
         filter_db_name = self.df[self.df["Column 1"].str.contains("DB  Name:", na=False)].reset_index()
         # print("db name", filter_db_name)
-        self.db_name = filter_db_name["Column 2"][0]
+        self.db_name = filter_db_name["Column 2"][0].strip()
 
     def get_statistics(self):
 
         filter_mv = self.df[self.df["Column 2"].str.contains("MV\(um\):", na=False)].reset_index()
-        self.mv = filter_mv["Column 3"][0]
+        self.mv = float(filter_mv["Column 3"][0])
 
         filter_mn = self.df[self.df["Column 2"].str.contains("MN\(um\):", na=False)].reset_index()
-        self.mn = filter_mn["Column 3"][0]
+        self.mn = float(filter_mn["Column 3"][0])
 
         filter_ma = self.df[self.df["Column 2"].str.contains("MA\(um\):", na=False)].reset_index()
-        self.ma = filter_ma["Column 3"][0]
+        self.ma = float(filter_ma["Column 3"][0])
 
         filter_cs = self.df[self.df["Column 2"].str.contains("CS:", na=False)].reset_index()
-        self.cs = filter_cs["Column 3"][0]
+        self.cs = float(filter_cs["Column 3"][0])
 
         filter_sd = self.df[self.df["Column 2"].str.contains("SD:", na=False)].reset_index()
-        self.sd = filter_sd["Column 3"][0]
+        self.sd = float(filter_sd["Column 3"][0])
 
         filter_mz = self.df[self.df["Column 2"].str.contains("Mz:", na=False)].reset_index()
-        self.mz = filter_mz["Column 3"][0]
+        self.mz = float(filter_mz["Column 3"][0])
 
         filter_si = self.df[self.df["Column 2"].str.contains("si:", na=False)].reset_index()
-        self.si = filter_si["Column 3"][0]
+        self.si = float(filter_si["Column 3"][0])
 
         filter_ski = self.df[self.df["Column 2"].str.contains("Ski:", na=False)].reset_index()
-        self.ski = filter_ski["Column 3"][0]
+        self.ski = float(filter_ski["Column 3"][0])
 
         filter_kg = self.df[self.df["Column 2"].str.contains("Kg:", na=False)].reset_index()
-        self.kg = filter_kg["Column 3"][0]
+        self.kg = float(filter_kg["Column 3"][0])
 
     @property
     def percentiles(self):
