@@ -17,6 +17,7 @@ class MicrotracS3500:
         self.get_indices()
         self.get_sample_information()
         self.get_statistics()
+        self.get_percentiles()
 
     def get_sample_information(self):
 
