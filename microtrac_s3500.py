@@ -98,6 +98,8 @@ class MicrotracS3500:
         self.df_percentiles.drop(columns=self.df_percentiles.columns[0],
                                  axis=1,
                                  inplace=True)
+        self.df_percentiles.columns = ["%Tile", "Size(um)"]
+        self.df_percentiles = self.df_percentiles.astype(float)
 
     @property
     def psd(self):
@@ -114,6 +116,8 @@ class MicrotracS3500:
         self.df_psd.reset_index(drop=True, inplace=True)
         self.df_psd = self.df_psd.rename(columns=self.df_psd.iloc[0])
         self.df_psd = self.df_psd[1:]
+        self.df_psd.columns = ["Size(um)", "%Chan", "%Pass"]
+        self.df_psd = self.df_psd.astype(float)
 
     def get_indices(self):
 
