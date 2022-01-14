@@ -129,6 +129,3 @@ class MicrotracS3500:
         for item in find_strings:
 
             self.dict_indices[item] = np.where(self.df == item)
-
-    def plot_pdf(self):
-        ...
