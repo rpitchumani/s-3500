@@ -1,14 +1,15 @@
 """
 Class to read exported Microtrac 3500 Particle Analysis CSV File
-2021, Ramanan Pitchumani
+2022, Ramanan Pitchumani
 """
+from typing import List, Dict, Any
 import pandas as pd
 import numpy as np
 
 
 class MicrotracS3500:
 
-    def __init__(self, path_csv):
+    def __init__(self, path_csv: str):
 
         self.path_csv = path_csv
         self.df = pd.read_csv(path_csv,
