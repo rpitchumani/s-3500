@@ -13,7 +13,7 @@ import re
 from microtrac_s3500 import MicrotracS3500
 
 
-def get_all_percentiles(psd_files: List) -> List[Dict]:
+def get_percentiles_from_file_list(psd_files: List) -> List[Dict]:
 
     re_pattern_sample_id = "([LR]\d{8}-\d{3})_(\d*)_(\d*)_(\d*)_(\d*)_(\d*)_(\d*)"
     list_psd = []
