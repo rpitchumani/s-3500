@@ -44,11 +44,14 @@ def get_percentiles_from_file_list(psd_files: List) -> List[Dict]:
             dict_psd = {
                 "file_name": psd_stem,
                 "file_name_id": file_name_id,
-                "file_name_date_time": file_name_datetime,
-                "d90": s3500.percentiles.loc[s3500.percentiles["%Tile"]==90, "Size(um)"].iloc[0],
-                "d50": s3500.percentiles.loc[s3500.percentiles["%Tile"]==50, "Size(um)"].iloc[0],
-                "d10": s3500.percentiles.loc[s3500.percentiles["%Tile"]==10, "Size(um)"].iloc[0]
+                "file_name_date_time": file_name_datetime
             }
+
+            for dp in s3500.percentiles["%Tile"].to_list():
+
+                dict_psd.update(
+                    {f"d{dp:.0f}": s3500.percentiles.loc[s3500.percentiles["%Tile"]==dp, "Size(um)"].iloc[0]}
+                )
 
             list_psd.append(dict_psd)
 
