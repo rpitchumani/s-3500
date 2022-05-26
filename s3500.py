@@ -7,7 +7,7 @@ import pandas as pd
 import numpy as np
 
 
-class MicrotracS3500:
+class S3500:
 
     def __init__(self, path_csv: str):
 
