@@ -1,5 +1,5 @@
 """
-Utility Functions which work together with the Microtrac Class
+Utility Functions which work together with the Microtrac S3500 Class
 """
 
 from typing import List, Dict, Any
@@ -11,6 +11,15 @@ from tqdm import tqdm
 import re
 
 from s3500 import S3500
+
+
+def get_s3500_file_list(s3500_path: str) -> List:
+
+    s3500_psd_pattern = "MTData*.csv"
+
+    s3500_psd_files = glob.glob(os.path.join(s3500_path, s3500_psd_pattern))
+
+    return s3500_psd_files
 
 
 def get_s3500_data_from_file_list(psd_files: List) -> List[Dict]:
@@ -36,7 +45,7 @@ def get_s3500_data_from_file_list(psd_files: List) -> List[Dict]:
         file_name_datetime = datetime.datetime(file_name_year, file_name_month, file_name_date, file_name_hour, file_name_minute, file_name_second)
 
         try:
-            s3500 = S3500((psd_file))
+            s3500 = S3500(psd_file)
 
             # print(s3500.percentiles)
             # print(file_name_id)
